@@ -154,9 +154,7 @@ public abstract class PBaseLoaderFragment extends Fragment implements ICameraExe
         if (getActivity() == null || isOverMaxCount()) {
             return;
         }
-        //if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-        //    requestPermissions(new String[]{Manifest.permission.CAMERA}, REQ_CAMERA);
-        //} else {
+  
             ImagePicker.takePhoto(getActivity(), null,
                     true, new OnImagePickCompleteListener() {
                         @Override
@@ -166,7 +164,6 @@ public abstract class PBaseLoaderFragment extends Fragment implements ICameraExe
                             }
                         }
                     });
-       // }
     }
 
     @Override
@@ -174,9 +171,7 @@ public abstract class PBaseLoaderFragment extends Fragment implements ICameraExe
         if (getActivity() == null || isOverMaxCount()) {
             return;
         }
-        //if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-        //    requestPermissions(new String[]{Manifest.permission.CAMERA}, REQ_CAMERA);
-        //} else {
+  
             ImagePicker.takeVideo(getActivity(), null, getSelectConfig().getMaxVideoDuration(),
                     true, new OnImagePickCompleteListener() {
                         @Override
@@ -186,7 +181,6 @@ public abstract class PBaseLoaderFragment extends Fragment implements ICameraExe
                             }
                         }
                     });
-        //}
     }
 
     /**
@@ -196,10 +190,7 @@ public abstract class PBaseLoaderFragment extends Fragment implements ICameraExe
         if (getActivity() == null) {
             return;
         }
-        //if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-         //   requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQ_STORAGE);
-        //} else {
+   
             //从媒体库拿到文件夹列表
             ImagePicker.provideMediaSets(getActivity(), getSelectConfig().getMimeTypes(), new MediaSetsDataSource.MediaSetProvider() {
                 @Override
@@ -207,7 +198,6 @@ public abstract class PBaseLoaderFragment extends Fragment implements ICameraExe
                     loadMediaSetsComplete(imageSets);
                 }
             });
-        //}
     }
 
     /**
@@ -255,23 +245,7 @@ public abstract class PBaseLoaderFragment extends Fragment implements ICameraExe
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
-        if (requestCode == REQ_CAMERA) {
-            //if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //申请成功，可以拍照
-                takePhoto();
-           // } else {
-             //   PPermissionUtils.create(getContext()).showSetPermissionDialog(
-               //         getString(R.string.picker_str_camera_permission));
-            //}
-        //} else if (requestCode == REQ_STORAGE) {
-            //if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //申请成功，可以拍照
-                loadMediaSets();
-          //  } else {
-              //  PPermissionUtils.create(getContext()).
-                        showSetPermissionDialog(getString(R.string.picker_str_storage_permission));
-            //}
-        //}
+
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
